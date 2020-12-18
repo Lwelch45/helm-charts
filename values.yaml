@@ -6,6 +6,7 @@ fullnameOverride: ""
 debug: false
 
 server:
+  sidecarContainers:
   enabled: true
   image:
     repository: temporalio/server
@@ -71,7 +72,7 @@ server:
     logLevel: "debug,info"
 
     # IMPORTANT: This value cannot be changed, once it's set.
-    numHistoryShards: 512
+    numHistoryShards: 6
 
     persistence:
       default:
@@ -143,6 +144,7 @@ server:
   frontend:
     # replicaCount: 1
     service:
+      annotations: {} # Evaluated as template
       type: ClusterIP
       port: 7233
     metrics:

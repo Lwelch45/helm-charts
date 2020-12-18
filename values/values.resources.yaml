@@ -3,22 +3,22 @@ server:
     resources:
       requests:
         cpu: 100m
-        memory: 512Mi
+        memory: 256Mi
 
   history:
     resources:
       requests:
         cpu: 100m
-        memory: 512Mi
+        memory: 256Mi
 
   matching:
     resources:
       requests:
         cpu: 100m
-        memory: 512Mi
+        memory: 256Mi
 
   worker:
     resources:
       requests:
         cpu: 100m
-        memory: 512Mi
+        memory: 256Mi
