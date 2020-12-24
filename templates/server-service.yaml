@@ -4,6 +4,7 @@ kind: Service
 metadata:
   name: {{ include "temporal.componentname" (list . "frontend") }}
   labels:
+    app: frontend
     app.kubernetes.io/name: {{ include "temporal.name" . }}
     helm.sh/chart: {{ include "temporal.chart" . }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
@@ -11,9 +12,9 @@ metadata:
     app.kubernetes.io/version: {{ .Chart.AppVersion | replace "+" "_" }}
     app.kubernetes.io/component: frontend
     app.kubernetes.io/part-of: {{ .Chart.Name }}
-    {{- if .Values.server.frontend.service.annotations }}
-    annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.server.frontend.service.annotations "context" $) | nindent 4 }}
-    {{- end }}
+  {{- if .Values.server.frontend.service.annotations }}
+  annotations: {{- include "common.tplvalues.render" ( dict "value" .Values.server.frontend.service.annotations "context" $) | nindent 4 }}
+  {{- end }}
 spec:
   type: {{ .Values.server.frontend.service.type }}
   ports:

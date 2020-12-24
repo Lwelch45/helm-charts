@@ -4,6 +4,7 @@ kind: Service
 metadata:
   name: {{ include "temporal.componentname" (list . "web") }}
   labels:
+    app: web
     app.kubernetes.io/name: {{ include "temporal.name" . }}
     helm.sh/chart: {{ include "temporal.chart" . }}
     app.kubernetes.io/managed-by: {{ .Release.Service }}
@@ -12,7 +13,7 @@ metadata:
     app.kubernetes.io/component: web
     app.kubernetes.io/part-of: {{ .Chart.Name }}
   {{- with .Values.web.service.annotations }}
-annotations:
+  annotations:
   {{ toYaml . | indent 4 }}
   {{- end }}
 spec:

@@ -145,7 +145,7 @@ server:
     # replicaCount: 1
     service:
       annotations: {} # Evaluated as template
-      type: ClusterIP
+      type: LoadBalancer
       port: 7233
     metrics:
       annotations:
@@ -237,7 +237,7 @@ web:
     pullPolicy: IfNotPresent
 
   service:
-    type: ClusterIP
+    type: LoadBalancer
     port: 8088
     annotations: {}
     # loadBalancerIP:

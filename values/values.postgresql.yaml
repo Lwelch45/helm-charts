@@ -1,4 +1,27 @@
+web:
+  service:
+    type: LoadBalancer
+    port: 8088
+    annotations: {
+      external-dns.alpha.kubernetes.io/hostname: "temporal.lofianimated.com"
+    }
+  
 server:
+  frontend:
+    service:
+      annotations: {external-dns.alpha.kubernetes.io/hostname: frontend.lofianimated.com}
+      type: LoadBalancer
+      port: 7233
+    metrics:
+      enabled: false
+      serviceMonitor: {}
+      prometheus: {}
+    podAnnotations: {}
+    resources: {}
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
+
   config:
     persistence:
       default:
@@ -6,26 +29,41 @@ server:
 
         sql:
           driver: "postgres"
-          host: _HOST_
-          port: 5432
+          host: ***REMOVED***
+          port: 25060
           database: temporal
-          user: _USERNAME_
-          password: _PASSWORD_
-          maxConns: 20
+          user: temporal_dev
+          password: ***REMOVED***
+          maxConns: 5
           maxConnLifetime: "1h"
+          tls:
+            enabled: true
 
       visibility:
         driver: "sql"
 
         sql:
           driver: "postgres"
-          host: _HOST_
-          port: 5432
+          host: ***REMOVED***
+          port: 25060
           database: temporal_visibility
-          user: _USERNAME_
-          password: _PASSWORD_
-          maxConns: 20
+          user: temporal_dev
+          password: ***REMOVED***
+          maxConns: 5
           maxConnLifetime: "1h"
+          tls:
+            enabled: true
+grafana:
+  enabled: false
+
+elasticsearch:
+  enabled: false
+
+prometheus:
+  enabled: false
+
+kafka:
+  enabled: false
 
 cassandra:
   enabled: false
@@ -34,7 +72,7 @@ mysql:
   enabled: false
 
 postgresql:
-  enabled: true
+  enabled: false
 
 schema:
   setup:
