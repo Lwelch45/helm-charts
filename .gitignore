@@ -1,4 +1,6 @@
 /charts
 /Chart.lock
 /.idea
-/values/values.postgresql.yaml
+values/values.postgresql.yaml
+values.postgresql.yaml
+**/values.postgresql.yaml
