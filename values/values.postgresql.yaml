@@ -29,11 +29,11 @@ server:
 
         sql:
           driver: "postgres"
-          host: ***REMOVED***
+          host: host
           port: 25060
           database: temporal
           user: temporal_dev
-          password: ***REMOVED***
+          password: pass
           maxConns: 5
           maxConnLifetime: "1h"
           tls:
@@ -44,11 +44,11 @@ server:
 
         sql:
           driver: "postgres"
-          host: ***REMOVED***
+          host: host
           port: 25060
           database: temporal_visibility
           user: temporal_dev
-          password: ***REMOVED***
+          password: pass
           maxConns: 5
           maxConnLifetime: "1h"
           tls:
@@ -77,5 +77,6 @@ postgresql:
 schema:
   setup:
     enabled: false
+    
   update:
     enabled: false
